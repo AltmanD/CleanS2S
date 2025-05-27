@@ -204,8 +204,7 @@ We appreciate all the feedbacks and contributions. Feel free to ask questions. P
 ## Citing CleanS2S
 ```latex
 @misc{CleanS2S,
-    title={CleanS2S: High-quality and streaming Speech-to-Speech interactive agent in a single file},
-    author={Niu, Yazhe and Hu, Shuai and Wang, Haolin and Lu, Yudong and Ma, Runmin and Chen, Yun},
+    title={CleanS2S: Single-file Framework for Proactive Speech-to-Speech Interaction},
     publisher={GitHub},
     year={2024},
 }
