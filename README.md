@@ -1,6 +1,6 @@
 # CleanS2S
 
-English | [简体中文(Simplified Chinese)](https://github.com/opendilab/CleanS2S/blob/main/README.zh.md) 
+English 
 
 **CleanS2S** is a Speech-to-Speech (**S2S**) prototype agent that provides high-quality and streaming interactions in the single-file implementation. This design is simple and clean, aiming to provide a 
 Chinese interactive prototype agent like the GPT-4o style. This project wants to let users directly experience the power of Linguistic User Interface (**LUI**) and quickly explore/vailidate the potential of the S2S pipeline for researchers.
@@ -8,77 +8,6 @@ Chinese interactive prototype agent like the GPT-4o style. This project wants to
 Here are some live conversation demos of CleanS2S:
 
 > Note: please unmute the video first.
-
-
-<table>
-<tr>
-<td align="center">
-
-**投资话题1**
-
-</td>
-<td align="center">
-
-**投资话题2**
-
-</td>
-<td align="center">
-
-**心情话题**
-
-</td>
-<td align="center">
-
-**高考志愿话题**
-
-</td>
-</tr>
-<tr>
-<td align="center">
-
-[投资话题1](https://github.com/user-attachments/assets/65333528-b07c-42ab-9cb5-660b68b404c4)
-
-</td>
-<td align="center">
-
-[投资话题2](https://github.com/user-attachments/assets/f6ee3bad-ddd0-404f-9995-088ac1902b11)
-
-</td>
-<td align="center">
-
-[心情话题](https://github.com/user-attachments/assets/40d20126-9c6b-45db-8ee9-ce768fee5b3f)
-
-</td>
-<td align="center">
-
-[高考志愿话题](https://github.com/user-attachments/assets/e86c1cad-ca49-4145-8c22-8d9de59f44b4)
-
-</td>
-</tr>
-</table>
-
-
-<br>
-<details>
-<summary><strong style="font-size: 1.5em;">More Conversation Demos</strong></summary>
-<br>
-
-<table>
-<tr>
-<td align="center">
-
-**胃病话题**
-
-</td>
-</tr>
-<tr>
-<td align="center">
-
-[胃药话题](https://github.com/user-attachments/assets/84d27040-52b5-478e-8796-48ea7f468dc9)
-
-</td>
-</tr>
-</table>
 
 </details>
 
@@ -165,7 +94,7 @@ This provides room for expansion and agility in answering various practical ques
 #### Installation
 ```bash
 ## clone the repository
-git clone https://github.com/opendilab/CleanS2S.git
+git clone 
 cd CleanS2S/backend
 pip install -r requirements.txt
 ```
@@ -182,7 +111,8 @@ For LLM, we use LLM API by default, you can also follow the instructions below t
 
 > delete the `--enable_llm_api` and `--lm_model_url` parameters, and modify the `--lm_model_name` parameter to your local LLM model path (e.g., `--lm_model_name /home/users/deepseek-v2.5`).
 
-You also need to prepare a reference audio directory, which contains the reference audios for the prosody and timbre transfer. Here we prepare a [sample reference audio directory](https://github.com/opendilab/CleanS2S/tree/main/backend/ref_audio) in this repository.
+You also need to prepare a reference audio directory, which contains the reference audios for the prosody and timbre transfer. 
+
 If you want to use your own reference audio, you need to keep it in the same format as the sample reference audio directory. And the audio should be 10~20 seconds long with clear pronunciation.
 
 
@@ -266,7 +196,7 @@ docker run -it -p 3001:3001 amazonlinux:2023.2.20231011.0 sh
 ## install the necessary packages
 dnf install vim git nodejs -y
 npm install -g pnpm
-git clone https://github.com/opendilab/CleanS2S.git
+git clone 
 cd CleanS2S/frontend_nextjs
 pnpm install
 ```
@@ -300,11 +230,6 @@ P.S.: If you want to run the client locally, you should install node.js and pnpm
 
 We appreciate all the feedbacks and contributions. Feel free to ask questions. Posting in Github Issues and PRs are also welcome.
 
-- [File an issue](https://github.com/opendilab/CleanS2S/issues/new/choose) on Github
-- Discuss on CleanS2S [discord channel](https://discord.gg/dkZS2JF56X)
-- Discuss on OpenDILab's WeChat group (i.e. add us on WeChat: ding314assist)
-
-
 ## Acknowledgements
 - We thank [speech-to-speech](https://github.com/huggingface/speech-to-speech) for first open-sourcing the English speech-to-speech pipeline.
 - We thank [funasr](https://github.com/modelscope/FunASR) and [CosyVoice](https://github.com/FunAudioLLM/CosyVoice) for open-sourcing high-quality Chinese ASR/TTS models.
@@ -316,7 +241,6 @@ We appreciate all the feedbacks and contributions. Feel free to ask questions. P
     title={CleanS2S: High-quality and streaming Speech-to-Speech interactive agent in a single file},
     author={Niu, Yazhe and Hu, Shuai and Wang, Haolin and Lu, Yudong and Ma, Runmin and Chen, Yun},
     publisher={GitHub},
-    howpublished={\url{https://github.com/opendilab/CleanS2S}},
     year={2024},
 }
 ```

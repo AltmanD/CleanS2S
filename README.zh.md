@@ -1,83 +1,11 @@
 # CleanS2S
 
-简体中文(Simplified Chinese) | [English](https://github.com/opendilab/CleanS2S/blob/main/README.md) 
+简体中文(Simplified Chinese)
 
 **CleanS2S** 是一个语音到语音 (**S2S**) 的原型智能体，提供高质量的流式交互，并采用单文件实现。其设计简洁明了，旨在提供类似 GPT-4o 风格的中文交互原型智能体。该项目希望让用户直接体验语言用户界面 (**LUI**) 的强大功能，并帮助研究人员快速探索和验证 S2S pipeline 的潜力。
 
 以下是 CleanS2S 的一些实时对话演示视频：
 
-> 注意：请先取消视频静音。
-
-
-<table>
-<tr>
-<td align="center">
-
-**投资话题1**
-
-</td>
-<td align="center">
-
-**投资话题2**
-
-</td>
-<td align="center">
-
-**心情话题**
-
-</td>
-<td align="center">
-
-**高考志愿话题**
-
-</td>
-</tr>
-<tr>
-<td align="center">
-
-[投资话题1](https://github.com/user-attachments/assets/65333528-b07c-42ab-9cb5-660b68b404c4)
-
-</td>
-<td align="center">
-
-[投资话题2](https://github.com/user-attachments/assets/f6ee3bad-ddd0-404f-9995-088ac1902b11)
-
-</td>
-<td align="center">
-
-[心情话题](https://github.com/user-attachments/assets/40d20126-9c6b-45db-8ee9-ce768fee5b3f)
-
-</td>
-<td align="center">
-
-[高考志愿话题](https://github.com/user-attachments/assets/e86c1cad-ca49-4145-8c22-8d9de59f44b4)
-
-</td>
-</tr>
-</table>
-
-
-<br>
-<details>
-<summary><strong style="font-size: 1.5em;">更多的对话例子</strong></summary>
-<br>
-
-<table>
-<tr>
-<td align="center">
-
-**胃病话题**
-
-</td>
-</tr>
-<tr>
-<td align="center">
-
-[胃药话题](https://github.com/user-attachments/assets/84d27040-52b5-478e-8796-48ea7f468dc9)
-
-</td>
-</tr>
-</table>
 
 </details>
 
@@ -118,36 +46,6 @@
   - WebSearchHelper 类负责根据用户查询进行在线搜索或收集与对话相关的附加信息。这使智能体能够参考最新或外部数据，增强响应的丰富性和准确性。
   - RAG 类实现了检索增强生成方法，首先从数据库中检索相关信息，然后使用这些信息生成响应。这一两步过程确保智能体的回复基于相关的事实数据，使互动更加知情和符合上下文。
 
-#### 输出示例
-> 注意：由于计算资源限制，最大输出的令牌数量有限。
-
-<table>
-  <tr>
-    <th>示例</th>
-    <td>
-      <strong>LanguageModelHandler</strong><br>
-      <span style="color: grey; font-size: smaller;"></span>
-    </td>
-    <td>
-      <strong>RAGLanguageModelHelper</strong><br>
-      <span style="color: grey; font-size: smaller;"></span>
-    </td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>芭比波朗虫草粉底液产品口播文案\n\n大家好，我是你们的美妆达人小美，今天我要向大家介绍一款我最近发现的宝藏产品——芭比波朗虫草粉底液。首先，让我们来看看这款粉底液的
-产品特性。它采用三重持色科技，能够均匀分散，贴肤不结块，让你的妆容持久不暗沉。同时，它还拥有面霜级的质地，特别适合干性肌肤使用，能够提供长时间的滋润和保湿效果，使肌肤在上妆的同时得到滋养。其次，>让我们来看看这款粉底液是如何满足用户需求的。它含有37种护肤精粹，包括冬虫夏草与人参提取物，这些成分能够激发肌肤能量，提供抗老效果，同时积雪草与圣保罗草有助于紧致肌肤。此外，它还含有透明质酸与稻米>提取物，确保了粉底液的高保湿效果，使用后肌肤不会感到干燥紧绷。
-    <td>天啊，我太恨芭比布朗了，为什么这么晚才让我知道还有这么好用的产品！芭比布朗，你不营销你的虫草粉底液你糊涂啊！\n\n你知道吗。我之前用的那些粉底液，不是卡粉就>是脱妆，冬天用还特别干，简直让人抓狂。直到我遇到了芭比波朗的虫草粉底液，我的天，简直是干皮救星！它的质地就像面霜一样，滋润得不得了，上妆后皮肤感觉水润润的，完全没有紧绷感。而且，它的粉质超级细腻>，用三重持色科技，上妆后均匀分散，贴肤不结块，简直就是自然无瑕的代名词。更别提</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>MAC无暇粉底液二代\n\n## 产品特性\n\nMAC无暇粉底液二代是一款专为油皮星姐妹打造的粉底液。它具有以下特点：\n\n- 持久控油：能够24小时持妆，即使到了晚上也能保持妆容>不花。- 全新科技：采用PRO流体黑科技，使得粉底液能够均匀覆盖肤色，同时保持轻薄服帖。- 不脱妆：妆效持久，不卡粉、不斑驳，不拔干，适合长时间保持完美妆容。- 控油成分：含有糖海带精粹，有助于控油，使油
-性皮肤能够全天保持雾面效果。- 高遮瑕力：能够有效遮盖痘痘、痘坑和毛孔，提供高遮瑕效果，即使近距离观察也不怕。- 养肤成分：含有80%的养肤精粹，成分温和，有助于抵抗外界刺激，同时长效平衡水油。- 专为亚洲肌肤定制：提供三大明星色号，适合亚洲人的肤色，更容易找到匹配自己肤色的粉底液。## 用户需求对接\n\n油皮星姐妹常常苦恼于粉底液经常脱妆，容易氧化，假白等问题。而MAC无暇粉底液二代正是为了解决这些问>题而生。它能够持久控油，不脱妆，不卡粉，不斑驳，不拔干，适合爱夜生活的晚8人们。同时，它还能够遮盖痘痘、痘坑和毛孔，提供高遮瑕效果，让油皮姐妹们在任何场合都能保持完美妆容。
-    <td>嘿，油皮姐妹们，是不是常常为脱妆、氧化、假白这些问题烦恼。别担心，MAC无暇粉底液二代来拯救你们啦！这款粉底液简直就是油皮的救星，24小时持妆，晚8点出门也不怕>花妆，整夜都能保持无暇状态。全新PRO流体黑科技，让你的肤色匀净，轻薄服帖，妆效持久不卡粉、不斑驳，不拔干。更厉害的是，它含有糖海带精粹，一抹就能控油，大油皮全天都能保持雾面效果。痘痘、痘坑、毛孔统
-统不在话下，高遮瑕力让你不怕怼脸看。而且，80%的养肤精粹</td>
-  </tr>
-
-</table>
 
 
 ## 快速上手
@@ -157,7 +55,7 @@
 #### 安装
 ```bash
 ## clone the repository
-git clone https://github.com/opendilab/CleanS2S.git
+git clone 
 cd CleanS2S/backend
 pip install -r requirements.txt
 ```
@@ -174,7 +72,7 @@ pip install -r requirements.txt
 
 > 删除 `--enable_llm_api` 和 `--lm_model_url` 参数，修改 `--lm_model_name` 参数为您的本地 LLM 模型路径（例如 `--lm_model_name /home/users/deepseek-v2.5`）。
 
-您还需要准备一个参考音频目录，其中包含用于韵律和音色转换的参考音频。我们在此仓库中准备了一个[示例参考音频目录](https://github.com/opendilab/CleanS2S/blob/main/backend/ref_audio)
+您还需要准备一个参考音频目录，其中包含用于韵律和音色转换的参考音频。
 
 如果您想使用自己的参考音频，需要保持与示例参考音频目录相同的格式。音频应为 10~20 秒长，发音清晰。
 
@@ -257,7 +155,7 @@ docker run -it -p 3001:3001 amazonlinux:2023.2.20231011.0 sh
 ## 安装必要的包
 dnf install vim git nodejs -y
 npm install -g pnpm
-git clone https://github.com/opendilab/CleanS2S.git
+git clone 
 cd CleanS2S/frontend_nextjs
 pnpm install
 ```
@@ -291,9 +189,6 @@ pnpm dev --port 3001
 
 我们非常感谢所有反馈和贡献，欢迎随时提问。也欢迎在 Github 上提交问题和 PR 。
 
-- [在Github上提交问题](https://github.com/opendilab/CleanS2S/issues/new/choose)
-- 在 CleanS2S 的[Discord频道](https://discord.gg/dkZS2JF56X)上讨论
-- 在 OpenDILab 的微信群中讨论（请添加小助手微信：ding314assist）
 
 ## 致谢
 - 感谢 [speech-to-speech](https://github.com/huggingface/speech-to-speech) 首次开源英文版的语音到语音交互 pipeline。
@@ -306,7 +201,6 @@ pnpm dev --port 3001
     title={CleanS2S: High-quality and streaming Speech-to-Speech interactive agent in a single file},
     author={Niu, Yazhe and Hu, Shuai and Wang, Haolin and Lu, Yudong and Ma, Runmin and Chen, Yun},
     publisher={GitHub},
-    howpublished={\url{https://github.com/opendilab/CleanS2S}},
     year={2024},
 }
 ```
