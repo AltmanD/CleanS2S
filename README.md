@@ -5,9 +5,6 @@ English
 **CleanS2S** is a Speech-to-Speech (**S2S**) prototype agent that provides high-quality and streaming interactions in the single-file implementation. This design is simple and clean, aiming to provide a 
 Chinese interactive prototype agent like the GPT-4o style. This project wants to let users directly experience the power of Linguistic User Interface (**LUI**) and quickly explore/vailidate the potential of the S2S pipeline for researchers.
 
-Here are some live conversation demos of CleanS2S:
-
-> Note: please unmute the video first.
 
 </details>
 
