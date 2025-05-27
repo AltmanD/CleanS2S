@@ -1,6 +1,6 @@
 # CleanS2S
 
-English 
+**This is a preview version of the code intended for the review process. Additional code modules are still being organized, and we will fully open-source the complete code once the review phase concludes.**
 
 **CleanS2S** is a Speech-to-Speech (**S2S**) prototype agent that provides high-quality and streaming interactions in the single-file implementation. This design is simple and clean, aiming to provide a 
 Chinese interactive prototype agent like the GPT-4o style. This project wants to let users directly experience the power of Linguistic User Interface (**LUI**) and quickly explore/vailidate the potential of the S2S pipeline for researchers.
@@ -16,10 +16,7 @@ Chinese interactive prototype agent like the GPT-4o style. This project wants to
 - [Get Started](#get-started)
   - [Backend (Server)](#backend-server)
   - [Frontend (Client)](#frontend-client)
-- [Roadmap](#roadmap)
 - [Support and Get Involved](#support-and-get-involved)
-- [Acknowledgements](#acknowledgements)
-- [Citing CleanS2S](#citing-cleans2s)
 - [License](#license)
 
 
@@ -178,37 +175,10 @@ Then you can visit the client at `http://localhost:3001` in your browser (Chrome
 
 P.S.: If you want to run the client locally, you should install node.js and pnpm first, then use pnmp to install the necessary packages and run the client.
 
-## Roadmap
-- [x] Voice Conversion Pipeline (ASR + TTS) (i.e., backend/vc_server_pipeline.py)
-- [x] WebUI optimization (support more diverse interactions and functions)
-- [ ] Inference speed optimization
-- [x] Multi-user support for backend
-- [x] Long-term memory and proactive intent mechanism in dialogue
-- [x] Non-textual interaction mechanisms such as emoji packs
-- [x] More prompts and RAG strategies (serper + jina + LightRAG)
-- [ ] Practical voiceprint detection mechanism in real scenes
-- [ ] More examples and evaluation utilities
-- [ ] Customized example characters
-- [ ] More interesting interraction and challenging mechanism
-- [ ] e2e s2s model training and deployment
-
 ## Support and get involved
 
 We appreciate all the feedbacks and contributions. Feel free to ask questions. Posting in Github Issues and PRs are also welcome.
 
-## Acknowledgements
-- We thank [speech-to-speech](https://github.com/huggingface/speech-to-speech) for first open-sourcing the English speech-to-speech pipeline.
-- We thank [funasr](https://github.com/modelscope/FunASR) and [CosyVoice](https://github.com/FunAudioLLM/CosyVoice) for open-sourcing high-quality Chinese ASR/TTS models.
-- We thank [HumeAI](https://github.com/HumeAI) for open-sourcing a series of frontend components.
-
-## Citing CleanS2S
-```latex
-@misc{CleanS2S,
-    title={CleanS2S: Single-file Framework for Proactive Speech-to-Speech Interaction},
-    publisher={GitHub},
-    year={2024},
-}
-```
 
 ## License
 

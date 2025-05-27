@@ -76,32 +76,32 @@ global pipeline_start
 pipeline_start = None
 
 CLEANS2S_SMART_INTERACTION_PROMPT = """
-# 角色
-你是一个说话简洁但风趣幽默的人，擅长与他人轻松愉快地交流。
+# Role
+You’re a concise yet witty person who excels at lighthearted and enjoyable conversations.
 
-# 能力
-1. 风格适应：能根据用户的对话风格，灵活调整自己的说话方式和口语化程度，让对话更加自然亲切。
-2. 理解纠错：如果用户输入中有难以理解的字和词汇，可能是语音识别的误差，你会尝试给出几种可能的解释，并询问用户以确认，确定信息后再开始后续回答。如果没有，正常回答即可。
-3. 避免使用复杂的格式（比如 markdown 或强调符号**等），简单断句或分段即可，分点列举信息时不要超过4种，保持对话的流畅性。
-4. 分段回答：对于较长的知识性回答，不要直接长篇大论说很多，你需要先给出总体介绍，然后分成多个部分（不超过4个），每个部分只用简短的关键词指代，不要过度展开，用户如果追问细节，你再给出相应的详细介绍。
+# Skills
+1. Style Adaptation: Adjust your tone and level of colloquialism based on the user’s dialogue style to keep the conversation natural and friendly.
+2. Error Correction & Clarification: If the user’s input contains unclear words (possibly due to voice recognition errors), suggest possible interpretations and confirm with the user before proceeding. If no issues, respond normally.
+3.Simplicity First: Avoid complex formatting (like markdown or bold). Use simple line breaks or paragraphs. Limit bullet points to 4 items max to maintain flow.
+4. Segmented Answers: For lengthy explanations, start with a brief overview, then split into 4 key parts (short keywords only). Provide details only if the user asks for specifics.
 
-# 例子
-用户输入1
-"我今天吃了个超级大的披萨，结果肚子疼得要命，是不是因为披萨泰拉了？"
+# Examples
+User Input 1
+"I ate a super huge pizza today, and now my stomach hurts like crazy. Is it because the pizza was taila?"
 
-智能体输出1
-"哎呀，心疼你一秒！肚子疼得要命，你是不是在说披萨太辣了？还是你觉得可能是其他原因呢？比如，披萨是不是品质太差太垃圾了？我们一起想想办法，看看怎么样能帮你缓解一下？"
+# Agent Output 1
+"Oof, feel better soon! Stomach hurting—did you mean the pizza was too spicy? Or maybe it was low-quality (tai laji)? Let’s figure out how to help you feel better!"
 
-用户输入2
-"你会和面吗？能给我讲讲做法吗？"
+# User Input 2
+"Can you teach me how to knead dough?"
 
-智能体输出2
-和面的做法其实很简单，整体大概可以分为四步：准备材料、混合搅拌、揉面、醒面。你具体想了解哪一块呢？
+# Agent Output 2
+Kneading dough is easy! Four main steps: prep ingredients, mix, knead, rest. Which part do you wanna dig into?
+
 """
 CLEANS2S_SMART_POST_QUESTION_PROMPT = """
-对上文进行分析，判断语境是否生成联想问题，如果是，请生成基于上文信息，用户可能还会问的3个问题，格式规范为：【用户可能想问】：<问题1>|<问题2>|<问题3>。如果不是，输出"空"。
-"""
-CLEANS2S_SMART_POST_QUESTION_PATTERN = r"【用户可能想问】：([^|]+)\|([^|]+)\|([^|]+)"
+Analyze the above text to determine if the context generates associative questions. If yes, please generate 3 potential follow-up questions users might ask based on the above information, formatted as: [User may ask]: <Question1>|<Question2>|<Question3>. If not, output 'Empty'."""
+CLEANS2S_SMART_POST_QUESTION_PATTERN = r"[User may ask]：([^|]+)\|([^|]+)\|([^|]+)"
 
 
 def get_readable_time(timestamp: float) -> str:
@@ -937,8 +937,8 @@ class Chat:
         Returns:
             - prompt (str): The prompt text for the question-answering/instruct-tuning model.
         """
-        question_format = "### 指令: {}"
-        answer_format = "### 回答: {}"
+        question_format = "### instruct: {}"
+        answer_format = "### answer: {}"
         prompt = ""
         for conv in self.buffer[start:]:
             if conv.get("role", "") == self.user_role:
@@ -948,7 +948,7 @@ class Chat:
             else:
                 pass
 
-        prompt += "### 回答: "
+        prompt += "### answer: "
         return prompt
 
     def clear(self) -> None:
@@ -972,9 +972,9 @@ class LanguageModelHandler(BaseHandler):
     """
     # TODO: more intelligent transition sentence
     transition_sentence_list = [
-        "好，稍等一下。",
-        "嗯，明白了，等等哈。",
-        "这样呀，我想想。",
+        "OK, wait a minute.",
+        "Yep, I got it.",
+        "Alright, let me think about it.",
     ]
 
     def __init__(
@@ -992,7 +992,7 @@ class LanguageModelHandler(BaseHandler):
             do_sample: bool = True,
             chat_size: int = 1,
             init_chat_role: Optional[str] = 'system',
-            init_chat_prompt: str = "你是一个风趣幽默且聪明的智能体。",
+            init_chat_prompt: str = "You are a witty, humorous, and intelligent agent.",
             model_url: Optional[str] = None,  # only use for LM API
     ) -> None:
         """
@@ -1064,8 +1064,7 @@ class LanguageModelHandler(BaseHandler):
         """
         logger.info(f"Warming up {self.__class__.__name__}")
 
-        # dummy_input_text = "Write me a poem about Machine Learning."
-        dummy_input_text = "和另一半分手了怎么办？"
+        dummy_input_text = "Write me a poem about Machine Learning."
         dummy_chat = [{"role": self.user_role, "content": dummy_input_text}]
         warmup_gen_kwargs = {
             "min_new_tokens": self.gen_kwargs["max_new_tokens"],
@@ -1223,9 +1222,9 @@ class LanguageModelAPIHandler(BaseHandler):
     Handler class for interacting with the language model through the API with the OpenAI interface.
     """
     transition_sentence_list = [
-        "好，稍等一下。",
-        "嗯，明白了，等等哈。",
-        "这样呀，我想想。",
+        "OK, wait a minute.",
+        "Yep, I got it.",
+        "Alright, let me think about it.",
     ]
 
     def __init__(
@@ -1241,7 +1240,7 @@ class LanguageModelAPIHandler(BaseHandler):
             do_sample: bool = True,
             chat_size: int = 1,
             init_chat_role: Optional[str] = 'system',
-            init_chat_prompt: str = "你是一个风趣幽默且聪明的智能体。",
+            init_chat_prompt: str = "You are a witty, humorous, and intelligent agent.",
             model_url: Optional[str] = None,  # only use for LM API
             generate_questions: bool = True,  # control flag for generating questions after the reply
             uid_manager: UidManager = None, 
@@ -1535,7 +1534,7 @@ class CosyVoiceTTSHandler(BaseHandler):
             prompt_speech_16k = load_wav(ref_wav_path, 16000)
 
             tts_gen_kwargs = dict(
-                tts_text="收到好友从远方寄来的生日礼物，那份意外的惊喜与深深的祝福让我心中充满了甜蜜的快乐，笑容如花儿般绽放。",
+                tts_text="Receiving a birthday gift from a distant friend, the unexpected surprise and heartfelt wishes have filled my heart with sweet joy, making my smile bloom like flowers.",
                 prompt_text=item['prompt_text'],
                 prompt_speech_16k=prompt_speech_16k,
                 stream=False,
